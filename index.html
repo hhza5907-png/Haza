@@ -2,444 +2,149 @@
 <html lang="ar">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <title>🔒 الجهاز مقفل</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔒 قفل الجهاز</title>
     <style>
-        /* ===== إعادة تعيين كاملة ===== */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            user-select: none;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
         }
-
-        /* ===== منع التمرير ===== */
-        html, body {
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            position: fixed;
-            top: 0;
-            left: 0;
+        body {
             background: #0a0a1a;
-            font-family: 'Segoe UI', Arial, sans-serif;
-            touch-action: none;
-        }
-
-        /* ===== الخلفية المتحركة ===== */
-        .background {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at center, #1a1a2e, #0a0a1a);
-            z-index: 0;
-        }
-
-        /* ===== حاوية القفل ===== */
-        .lock-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            color: white;
+            font-family: Arial, sans-serif;
+            height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            z-index: 10;
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-        }
-
-        .lock-box {
-            background: rgba(26, 26, 46, 0.95);
-            padding: 40px 30px;
-            border-radius: 30px;
             text-align: center;
-            max-width: 400px;
-            width: 90%;
-            box-shadow: 0 0 80px rgba(233, 69, 96, 0.3), inset 0 0 80px rgba(233, 69, 96, 0.05);
-            border: 1px solid rgba(233, 69, 96, 0.2);
-            position: relative;
-            animation: glow 3s ease-in-out infinite;
-        }
-
-        @keyframes glow {
-            0%, 100% { box-shadow: 0 0 80px rgba(233, 69, 96, 0.3); }
-            50% { box-shadow: 0 0 120px rgba(233, 69, 96, 0.5); }
-        }
-
-        .lock-icon {
-            font-size: 80px;
-            margin-bottom: 15px;
-            display: block;
-            animation: pulse 2s ease-in-out infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-        }
-
-        h1 {
-            color: #e94560;
-            font-size: 28px;
-            font-weight: 700;
-            margin-bottom: 8px;
-            letter-spacing: 1px;
-        }
-
-        .subtitle {
-            color: #888;
-            font-size: 14px;
-            margin-bottom: 25px;
-            opacity: 0.8;
-        }
-
-        /* ===== حقل كلمة المرور ===== */
-        .password-wrapper {
-            position: relative;
-            width: 100%;
-            margin-bottom: 15px;
-        }
-
-        input {
-            width: 100%;
-            padding: 16px 20px;
-            font-size: 24px;
-            text-align: center;
-            border: 2px solid #e94560;
-            border-radius: 15px;
-            background: rgba(0, 0, 0, 0.4);
-            color: #fff;
-            outline: none;
-            letter-spacing: 8px;
-            transition: 0.3s;
-            font-weight: bold;
-        }
-
-        input:focus {
-            border-color: #ff6b81;
-            box-shadow: 0 0 30px rgba(233, 69, 96, 0.2);
-        }
-
-        input::placeholder {
-            color: #555;
-            letter-spacing: 2px;
-            font-weight: normal;
-        }
-
-        /* ===== زر الفتح ===== */
-        .unlock-btn {
-            width: 100%;
-            padding: 16px;
-            font-size: 18px;
-            font-weight: 600;
-            background: linear-gradient(135deg, #e94560, #c73652);
-            color: white;
-            border: none;
-            border-radius: 15px;
-            cursor: pointer;
-            transition: 0.3s;
-            letter-spacing: 1px;
-            position: relative;
             overflow: hidden;
         }
-
-        .unlock-btn:hover {
-            transform: scale(1.02);
-            box-shadow: 0 0 30px rgba(233, 69, 96, 0.4);
+        .box {
+            background: #1a1a2e;
+            padding: 40px;
+            border-radius: 20px;
+            max-width: 350px;
+            width: 90%;
         }
-
-        .unlock-btn:active {
-            transform: scale(0.98);
+        .icon {
+            font-size: 70px;
+            margin-bottom: 15px;
         }
-
-        /* ===== رسائل الخطأ ===== */
-        .error-msg {
+        h1 {
             color: #e94560;
+            font-size: 26px;
+            margin-bottom: 8px;
+        }
+        p {
+            color: #aaa;
             font-size: 14px;
-            min-height: 30px;
-            margin-top: 12px;
-            font-weight: 500;
+            margin-bottom: 20px;
+        }
+        input {
+            width: 100%;
+            padding: 15px;
+            font-size: 20px;
+            text-align: center;
+            border: 2px solid #e94560;
+            border-radius: 12px;
+            background: #0a0a1a;
+            color: white;
+            outline: none;
+            margin-bottom: 15px;
+        }
+        button {
+            width: 100%;
+            padding: 15px;
+            font-size: 18px;
+            background: #e94560;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
             transition: 0.3s;
         }
-
-        .error-msg.success {
+        button:hover {
+            background: #c73652;
+        }
+        .msg {
+            margin-top: 12px;
+            font-size: 14px;
+            min-height: 25px;
+        }
+        .success {
             color: #4CAF50;
         }
-
-        /* ===== شريط الحالة الوهمي ===== */
-        .status-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            padding: 8px 15px;
-            background: rgba(0, 0, 0, 0.5);
-            color: #888;
-            font-size: 12px;
-            display: flex;
-            justify-content: space-between;
-            z-index: 20;
-            pointer-events: none;
-            backdrop-filter: blur(5px);
-        }
-
-        /* ===== أيقونة القفل في الزاوية ===== */
-        .lock-corner {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            color: rgba(233, 69, 96, 0.1);
-            font-size: 60px;
-            z-index: 1;
-            pointer-events: none;
+        .error {
+            color: #e94560;
         }
     </style>
 </head>
 <body>
-    <!-- خلفية -->
-    <div class="background"></div>
-
-    <!-- شريط حالة وهمي -->
-    <div class="status-bar">
-        <span id="timeDisplay">12:00</span>
-        <span>🔒 100%</span>
-    </div>
-
-    <!-- أيقونة في الزاوية -->
-    <div class="lock-corner">🔒</div>
-
-    <!-- ===== واجهة القفل ===== -->
-    <div class="lock-container" id="lockContainer">
-        <div class="lock-box">
-            <span class="lock-icon">🔒</span>
-            <h1>الجهاز مقفل</h1>
-            <p class="subtitle">أدخل كلمة المرور لفتح القفل</p>
-
-            <div class="password-wrapper">
-                <input type="password" id="passwordInput" placeholder="•••••" maxlength="10" autofocus>
-            </div>
-
-            <button class="unlock-btn" id="unlockBtn">🔓 فتح</button>
-            <div class="error-msg" id="errorMsg"></div>
-        </div>
+    <div class="box">
+        <div class="icon">🔒</div>
+        <h1>الجهاز مقفل</h1>
+        <p>أدخل كلمة المرور لفتح القفل</p>
+        <input type="password" id="pwd" placeholder="•••••" maxlength="10" autofocus>
+        <button onclick="unlock()">🔓 فتح</button>
+        <div class="msg" id="msg"></div>
     </div>
 
     <script>
-        // ===== ثوابت =====
         const PASSWORD = "12345";
-        const MAX_ATTEMPTS = 5;
-        let attempts = 0;
-        let locked = true;
 
-        // ===== عناصر =====
-        const passwordInput = document.getElementById('passwordInput');
-        const unlockBtn = document.getElementById('unlockBtn');
-        const errorMsg = document.getElementById('errorMsg');
-        const lockContainer = document.getElementById('lockContainer');
-
-        // ===== 1. منع جميع محاولات الخروج =====
-        function preventAllExits() {
-            // منع زر العودة
-            history.pushState(null, null, location.href);
-            window.onpopstate = function() {
-                history.pushState(null, null, location.href);
-                return false;
-            };
-
-            // منع إعادة التحميل
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'F5' || (e.ctrlKey && (e.key === 'r' || e.key === 'R')) || 
-                    (e.metaKey && e.key === 'r')) {
-                    e.preventDefault();
-                    return false;
-                }
-            });
-
-            // منع الخروج قبل تحميل الصفحة
-            window.addEventListener('beforeunload', function(e) {
-                if (locked) {
-                    e.preventDefault();
-                    e.returnValue = '';
-                    return '';
-                }
-            });
-
-            // منع النقر بزر الماوس الأيمن
-            document.addEventListener('contextmenu', function(e) {
-                e.preventDefault();
-                return false;
-            });
-
-            // منع النسخ والقص واللصق
-            document.addEventListener('copy', function(e) { e.preventDefault(); });
-            document.addEventListener('cut', function(e) { e.preventDefault(); });
-            document.addEventListener('paste', function(e) { e.preventDefault(); });
-
-            // منع التحديد
-            document.addEventListener('selectstart', function(e) { e.preventDefault(); });
-        }
-
-        // ===== 2. قفل الشاشة (ملء الشاشة) =====
-        function lockScreen() {
-            try {
-                if (document.documentElement.requestFullscreen) {
-                    document.documentElement.requestFullscreen().catch(() => {});
-                }
-                // للهواتف
-                if (screen.orientation && screen.orientation.lock) {
-                    screen.orientation.lock('portrait').catch(() => {});
-                }
-            } catch (e) {}
-        }
-
-        // ===== 3. منع الخروج من التطبيق (PWA) =====
-        function preventAppExit() {
-            if (navigator.wakeLock) {
-                navigator.wakeLock.request('screen').catch(() => {});
-            }
-        }
-
-        // ===== 4. منع الخروج عند تغيير التبويب =====
-        document.addEventListener('visibilitychange', function() {
-            if (document.hidden && locked) {
-                setTimeout(function() {
-                    lockScreen();
-                    preventAllExits();
-                }, 100);
-            }
-        });
-
-        // ===== 5. التحقق من كلمة المرور =====
         function unlock() {
-            const input = passwordInput.value.trim();
-
-            if (input === PASSWORD) {
-                locked = false;
-                errorMsg.className = 'error-msg success';
-                errorMsg.textContent = '✅ تم فتح الجهاز بنجاح!';
-                unlockBtn.disabled = true;
-                unlockBtn.style.opacity = '0.6';
-
-                // إلغاء القفل
-                if (document.exitFullscreen) {
-                    document.exitFullscreen().catch(() => {});
-                }
-
-                // إعادة توجيه بعد 2 ثانية
+            const input = document.getElementById('pwd');
+            const msg = document.getElementById('msg');
+            
+            if (input.value === PASSWORD) {
+                msg.className = 'msg success';
+                msg.textContent = '✅ تم فتح الجهاز!';
+                input.disabled = true;
+                document.querySelector('button').disabled = true;
+                
                 setTimeout(() => {
-                    window.location.href = 'about:blank';
-                }, 2000);
+                    window.location.href = "https://www.google.com";
+                }, 1500);
             } else {
-                attempts++;
-                const remaining = MAX_ATTEMPTS - attempts;
-                errorMsg.textContent = `❌ كلمة المرور غير صحيحة! (محاولات متبقية: ${remaining})`;
-                passwordInput.value = '';
-                passwordInput.focus();
-
-                // تأثير هز
-                const box = document.querySelector('.lock-box');
-                box.style.animation = 'shake 0.5s ease';
+                msg.className = 'msg error';
+                msg.textContent = '❌ كلمة المرور غير صحيحة!';
+                input.value = '';
+                input.focus();
+                
+                // تأثير اهتزاز بسيط
+                input.style.borderColor = 'red';
                 setTimeout(() => {
-                    box.style.animation = '';
+                    input.style.borderColor = '#e94560';
                 }, 500);
-
-                if (attempts >= MAX_ATTEMPTS) {
-                    errorMsg.textContent = '⛔ تم تجاوز الحد الأقصى للمحاولات! سيتم قفل الجهاز.';
-                    unlockBtn.disabled = true;
-                    unlockBtn.style.opacity = '0.6';
-                    
-                    // قفل شديد
-                    setInterval(function() {
-                        lockScreen();
-                        preventAllExits();
-                    }, 500);
-                }
             }
         }
 
-        // ===== 6. تأثير الهز =====
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes shake {
-                0%, 100% { transform: translateX(0); }
-                20% { transform: translateX(-20px); }
-                40% { transform: translateX(20px); }
-                60% { transform: translateX(-15px); }
-                80% { transform: translateX(15px); }
-            }
-        `;
-        document.head.appendChild(style);
-
-        // ===== 7. تحديث الوقت =====
-        function updateTime() {
-            const now = new Date();
-            const hours = String(now.getHours()).padStart(2, '0');
-            const minutes = String(now.getMinutes()).padStart(2, '0');
-            document.getElementById('timeDisplay').textContent = hours + ':' + minutes;
-        }
-        setInterval(updateTime, 10000);
-        updateTime();
-
-        // ===== 8. منع الإغلاق بسحب الشاشة =====
-        document.addEventListener('touchmove', function(e) {
-            if (e.target.closest('.lock-box')) {
-                e.preventDefault();
-            }
-        }, { passive: false });
-
-        // ===== 9. عند تحميل الصفحة =====
-        window.onload = function() {
-            lockScreen();
-            preventAllExits();
-            preventAppExit();
-            passwordInput.focus();
-
-            // إعادة قفل كل ثانيتين
-            setInterval(function() {
-                if (locked) {
-                    lockScreen();
-                    preventAllExits();
-                }
-            }, 2000);
-
-            // منع الخروج بالضغط على زر الصفحة الرئيسية (محاكاة)
-            window.addEventListener('pagehide', function(e) {
-                if (locked) {
-                    e.preventDefault();
-                    return false;
-                }
-            });
+        // ===== منع زر العودة =====
+        history.pushState(null, null, location.href);
+        window.onpopstate = function() {
+            history.go(1);
         };
 
-        // ===== ربط زر الفتح =====
-        unlockBtn.addEventListener('click', unlock);
-        passwordInput.addEventListener('keydown', function(e) {
-            if (e.key === 'Enter') {
-                unlock();
+        // ===== منع إعادة التحميل =====
+        window.addEventListener('beforeunload', function(e) {
+            e.preventDefault();
+            e.returnValue = '';
+        });
+
+        // ===== تنبيه عند محاولة الخروج =====
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'F5' || (e.ctrlKey && e.key === 'r')) {
+                e.preventDefault();
+                alert('⚠️ لا يمكنك إعادة تحميل الصفحة!');
             }
         });
 
-        // ===== منع النقر المزدوج للتكبير =====
-        document.addEventListener('dblclick', function(e) {
-            e.preventDefault();
-        });
-
-        // ===== منع فتح قائمة المشاركة =====
-        if (navigator.share) {
-            navigator.share = function() {
-                return Promise.reject('ممنوع');
-            };
-        }
-
-        console.log('🔒 نظام القفل المحصن يعمل بنجاح!');
-        console.log('📝 كلمة المرور: 12345');
+        // ===== عند تحميل الصفحة =====
+        window.onload = function() {
+            document.getElementById('pwd').focus();
+        };
     </script>
 </body>
 </html>
